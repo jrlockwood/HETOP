@@ -172,11 +172,14 @@ hetop_fh_jags_efron_v1 <- function(ngk, Xm=NULL, Xs=NULL, bugs.seeds, nburn, nit
     ## with initial params - think this is due to starting SDs being small which
     ## provide nearly zero probabilities for some cells that actually have data.
     ## so fix this by starting SDs at 80th percentile.  also disperse starting values
-    ## more by starting means at random locations
+    ## more by starting means at random locations.
+    ##
+    ## NOTE: found this problem creeping up again even starting at the 80th percentile
+    ## so we switch to putting them at the 90th percentile
     #####################
     gen.inits <- function(i, seed){
         .tmp <- list(locm      = as.integer(sample(1:m[1], size=dat$G, replace=TRUE)),
-                     locs      = as.integer(rep(floor(0.8* m[2]), dat$G)),
+                     locs      = as.integer(rep(floor(0.90 * m[2]), dat$G)),
                      alpha0m   = rnorm(1),
                      alphamdev = rnorm(p[1]),
                      alpha0s   = rnorm(1),
