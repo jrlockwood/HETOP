@@ -184,7 +184,7 @@ hetop_fh_jags_efron_v1 <- function(ngk, Xm=NULL, Xs=NULL, bugs.seeds, nburn, nit
     #####################
     gen.inits <- function(i, seed){
         ## locm      = as.integer(sample(1:m[1], size=dat$G, replace=TRUE)),
-        .tmp <- list(locm      = rep(as.integer(floor(0.5*m[1])), dat$G)
+        .tmp <- list(locm      = rep(as.integer(floor(0.5*m[1])), dat$G),
                      locs      = as.integer(rep(floor(0.95 * m[2]), dat$G)),
                      alpha0m   = rnorm(1),
                      alphamdev = rnorm(p[1]),
