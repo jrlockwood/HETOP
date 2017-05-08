@@ -176,10 +176,16 @@ hetop_fh_jags_efron_v1 <- function(ngk, Xm=NULL, Xs=NULL, bugs.seeds, nburn, nit
     ##
     ## NOTE: found this problem creeping up again even starting at the 80th percentile
     ## so we switch to putting them at the 90th percentile
+    ##
+    ## NOTE: 5/8/2017, this problem kept happening, so we switch to 95th percentile
+    ## and also set the mus near the midpoint, with the hope of eliminating the risk
+    ## of an extreme mean and small sigma colliding to create a zero probability for
+    ## a populated cell
     #####################
     gen.inits <- function(i, seed){
-        .tmp <- list(locm      = as.integer(sample(1:m[1], size=dat$G, replace=TRUE)),
-                     locs      = as.integer(rep(floor(0.90 * m[2]), dat$G)),
+        ## locm      = as.integer(sample(1:m[1], size=dat$G, replace=TRUE)),
+        .tmp <- list(locm      = rep(as.integer(floor(0.5*m[1])), dat$G)
+                     locs      = as.integer(rep(floor(0.95 * m[2]), dat$G)),
                      alpha0m   = rnorm(1),
                      alphamdev = rnorm(p[1]),
                      alpha0s   = rnorm(1),
