@@ -24,7 +24,7 @@ getmle_fixedcuts <- function(ngk, fixedcuts, print.level=0, acov=FALSE, svals=NU
     stopifnot(length(param) == G + (G-nbad) + (K-3) )
     .mug            <- param[1:G]
     .lsigs          <- param[(G+1):(2*G - nbad)]
-    .sigmag         <- -1.0
+    .sigmag         <- rep(-1.0,G)
     .sigmag[notbad] <- exp(.lsigs)
     .sigmag[bad]    <- exp(mean(.lsigs))
 
@@ -82,7 +82,7 @@ getmle_fixedcuts <- function(ngk, fixedcuts, print.level=0, acov=FALSE, svals=NU
   }
 
   .lsigs          <- param[(G+1):(2*G - nbad)]
-  .sigmag         <- -1.0
+  .sigmag         <- rep(-1.0,G)
   .sigmag[notbad] <- exp(.lsigs)
   .sigmag[bad]    <- exp(mean(.lsigs))
 
