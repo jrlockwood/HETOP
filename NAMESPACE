@@ -1,4 +1,4 @@
-export(compute_grids, waic_hetop, fhhetop_mle, findcut, gendata_hetop, getmle_fixedcuts, getmle_stz_unweighted, getmle_stz, getmle_stz_a, getmle_stabilized, hetop_s1_fh_jags_v2f, hetop_fh_jags_efron_v1, get_results, condition_get, est_deref, est_deref_jags, process_jags, run_hetop_stata)
+export(compute_grids, waic_hetop, fhhetop_mle, findcut, gendata_hetop, getmle_fixedcuts, getmle_stz_unweighted, getmle_stz, getmle_stz_a, getmle_stabilized, hetop_s1_fh_jags_v2f, hetop_fh_jags_efron_v1, get_results, condition_get, est_deref, est_deref_jags, process_jags, run_hetop_stata, mle_hetop)
 
 importFrom("coda", "read.coda", "gelman.diag", "mcmc.list")
 
