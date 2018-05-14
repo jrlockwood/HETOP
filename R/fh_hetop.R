@@ -1,11 +1,4 @@
-############################################################
-## (7/12/2016): FH-HETOP model with Efron prior
-## (updated in v19 to use different alpha parameterization that seems to mix better, drop to 2 chains)
-############################################################
-hetop_fh_jags_efron_v1 <- function(ngk, Xm=NULL, Xs=NULL, bugs.seeds, nburn, niter, useglm=FALSE, fixcuts = c(-1.0, 0.0), workdir=NULL, cleandir=FALSE, p, m, gridL, gridU){
-    ## inherits from hetop_s1_fh_jags_v2f() but uses efron prior and linear regression on residuals.
-    ## additional arguments needed here are.
-    ##
+fh_hetop <- function(ngk, Xm=NULL, Xs=NULL, bugs.seeds, nburn, niter, useglm=FALSE, fixcuts = c(-1.0, 0.0), workdir=NULL, cleandir=FALSE, p, m, gridL, gridU){
     ## p:     2-dimensional vector of degrees of freedom for efron prior
     ## m:     2-dimensional vector of number of grid points for efron prior
     ## gridL: 2-dimensional vector of lower boundaries for grid

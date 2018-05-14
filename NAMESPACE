@@ -1,11 +1,9 @@
-export(compute_grids, waic_hetop, fhhetop_mle, findcut, gendata_hetop, getmle_fixedcuts, getmle_stz_unweighted, getmle_stz, getmle_stz_a, getmle_stabilized, hetop_s1_fh_jags_v2f, hetop_fh_jags_efron_v1, get_results, condition_get, est_deref, est_deref_jags, process_jags, run_hetop_stata, mle_hetop)
+export(fh_hetop, gendata_hetop, est_deref, est_deref_fhhetop, mle_hetop, waic_hetop)
 
 importFrom("coda", "read.coda", "gelman.diag", "mcmc.list")
 
 importFrom("splines", "bs")
 
-importFrom("eivtools", "triple_goal")
-
-importFrom("foreign", "read.dta", "write.dta")
-
 importFrom("stats", "coef", "cor", "lm", "nlm", "pnorm", "qnorm", "resid", "rnorm", "runif", "sd", "var", "weighted.mean")
+
+importFrom("eivtools", "triple_goal")
