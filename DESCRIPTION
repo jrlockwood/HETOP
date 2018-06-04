@@ -1,7 +1,7 @@
 Package: HETOP
 Type: Package
 Title: MLE and Bayesian estimation of Heteroskedastic Ordered Probit (HETOP) model
-Version: 0.2.0
+Version: 0.2.1
 Date: 2018-06-04
 Depends: R (>= 3.4.0), R2jags, splines, stats
 Author: J.R. Lockwood

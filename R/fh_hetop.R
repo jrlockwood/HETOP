@@ -2,7 +2,7 @@ fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=
 
     set.seed(seed)
     tmpdir <- tempdir()
-    setwd(tmpdir)
+    modloc <- paste0(tmpdir,"/model.txt")
 
     ## #############################################
     ## basic checks on arguments
@@ -394,19 +394,19 @@ fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=
       sigma[g] <- exp(epsilon[g,2])
 
       locm[g] ~ dcat(pFm[1:m[1]])
-      locs[g] ~ dcat(pFs[1:m[2]])\n", file="model.txt")
+      locs[g] ~ dcat(pFs[1:m[2]])\n", file=modloc)
     
     if( (!meanX && !sdX) ){
         cat("
       epsilon[g,1]  <- (gamma * grids[locs[g]]) + gridm[locm[g]]
-      epsilon[g,2]  <- grids[locs[g]]\n", file="model.txt", append=TRUE)
+      epsilon[g,2]  <- grids[locs[g]]\n", file=modloc, append=TRUE)
     }
     if( (meanX && sdX) ){
         cat("
       epsilon[g,1] <- inprod(Xm[g,1:dimXm], beta_m[1:dimXm]) + (gamma * grids[locs[g]]) + gridm[locm[g]]
-      epsilon[g,2] <- inprod(Xs[g,1:dimXs], beta_s[1:dimXs]) + grids[locs[g]]\n", file="model.txt", append=TRUE)
+      epsilon[g,2] <- inprod(Xs[g,1:dimXs], beta_s[1:dimXs]) + grids[locs[g]]\n", file=modloc, append=TRUE)
     }
-    cat("    }\n", file="model.txt", append=TRUE)
+    cat("    }\n", file=modloc, append=TRUE)
 
     cat("
     alpha0m     ~ dnorm(0.0, 0.01)
@@ -429,7 +429,7 @@ fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=
 
     gamma ~ dnorm(0.0, 0.1)
 
-    ", file="model.txt", append=TRUE) 
+    ", file=modloc, append=TRUE) 
 
     if(K >= 4){
         cat("
@@ -440,7 +440,7 @@ fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=
     for(k in 1:(K-3)){
       cuts[k+2] <- tmp[k]
     }
-    ", file="model.txt", append=TRUE)
+    ", file=modloc, append=TRUE)
     }
 
     if(meanX){
@@ -448,23 +448,23 @@ fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=
     for(i in 1:dimXm){
       beta_m[i] ~ dnorm(0.0, 0.1)
     }
-    ", file="model.txt", append=TRUE)
+    ", file=modloc, append=TRUE)
     }
     if(sdX){
         cat("
     for(i in 1:dimXs){
       beta_s[i] ~ dnorm(0.0, 0.1)
     }
-    ", file="model.txt", append=TRUE)
+    ", file=modloc, append=TRUE)
     }
-    cat("}\n", file="model.txt", append=TRUE)
+    cat("}\n", file=modloc, append=TRUE)
 
     ## ###########################################
     ## if desired, stop here and just return model file
     ## ###########################################
     if(modelfileonly){
         cat("model file location returned\n")
-        return(paste0(tmpdir,"/model.txt"))
+        return(modloc)
     }
 
     ## ###########################################
@@ -472,7 +472,7 @@ fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=
     ## ###########################################
     flush.console()
     print(system.time(r <- jags(
-                          model.file         = "model.txt",
+                          model.file         = modloc,
                           data               = jags.data,
                           inits              = jags.inits,
                           parameters.to.save = jags.parameters.to.save,

@@ -62,4 +62,10 @@ waic_hetop(ngk, samps)
   J.R. Lockwood \email{jrlockwood@ets.org}
 }
 
+\examples{
+## example call using data 'ngk' and output 'm' from fh_hetop:
+##
+## waic_hetop(ngk, m$BUGSoutput$sims.matrix)
+}
+
 \keyword{utilities}
