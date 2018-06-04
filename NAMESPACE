@@ -1,9 +1,11 @@
-export(fh_hetop, gendata_hetop, est_deref, est_deref_fhhetop, mle_hetop, waic_hetop)
-
-importFrom("coda", "read.coda", "gelman.diag", "mcmc.list")
+export(fh_hetop, gendata_hetop, mle_hetop, triple_goal, waic_hetop)
 
 importFrom("splines", "bs")
 
-importFrom("stats", "coef", "cor", "lm", "nlm", "pnorm", "qnorm", "resid", "rnorm", "runif", "sd", "var", "weighted.mean")
+importFrom("stats", "coef", "cor", "lm", "nlm", "pnorm", "qnorm",
+           "quantile", "resid", "rnorm", "runif", "sd", "var",
+           "weighted.mean")
 
-importFrom("eivtools", "triple_goal")
+importFrom("utils", "flush.console")
+
+importFrom("R2jags", "jags")
