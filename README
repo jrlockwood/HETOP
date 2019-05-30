@@ -1,1 +1,1 @@
-J.R. Lockwood, Benjamin Shear, Katherine E. Castellano: Functions for maximum likelihood estimation of Heteroskedastic Ordered Probit (HETOP) model, and for Bayesian estimation of the Fay-Herriot Heteroskedastic Ordered Probit (FH-HETOP) model.
+Installation requires JAGS to be installed on your system, so that the R2jags package can be installed.

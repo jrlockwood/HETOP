@@ -48,14 +48,15 @@ waic_hetop(ngk, samps)
 }
 
 \references{
-  Lockwood J.R., Castellano K.E. and Shear B.R. (Forthcoming).
+  Lockwood J.R., Castellano K.E. and Shear B.R. (2018).
   \dQuote{Flexible Bayesian models for inferences from coarsened,
     group-level achievement data,}
-  \emph{Journal of Educational and Behavioral Statistics.}
+  \emph{Journal of Educational and Behavioral Statistics.} 43(6):663--692.
 
-  Vehtari A. and Gelman A. (2014).
-  \dQuote{WAIC and cross-validation in Stan.}
-  \emph{Unpublished manuscript.}
+  Vehtari A., Gelman A. and Gabry J. (2017).
+  \dQuote{Practical Bayesian model evaluation using leave-one-out
+    cross-validation and WAIC,}
+  \emph{Statistics and Computing.} 27(5):1413--1432.
 }
 
 \author{

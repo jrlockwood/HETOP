@@ -118,10 +118,10 @@ mle_hetop(ngk, fixedcuts, svals=NULL, iterlim = 1500, ...)
     of continuous test score distributions from coarsened data,}
   \emph{Journal of Educational and Behavioral Statistics} 42(1):3--45.
 
-  Lockwood J.R., Castellano K.E. and Shear B.R. (Forthcoming).
+  Lockwood J.R., Castellano K.E. and Shear B.R. (2018).
   \dQuote{Flexible Bayesian models for inferences from coarsened,
     group-level achievement data,}
-  \emph{Journal of Educational and Behavioral Statistics.}
+  \emph{Journal of Educational and Behavioral Statistics.} 43(6):663--692.
 }
 
 \author{

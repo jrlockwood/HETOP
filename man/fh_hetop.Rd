@@ -136,10 +136,10 @@ seed=12345, modelfileonly = FALSE, ...)
   \dQuote{Empirical Bayes deconvolution estimates,}
   \emph{Biometrika} 103(1):1--20.
   
-  Lockwood J.R., Castellano K.E. and Shear B.R. (Forthcoming).
+  Lockwood J.R., Castellano K.E. and Shear B.R. (2018).
   \dQuote{Flexible Bayesian models for inferences from coarsened,
     group-level achievement data,}
-  \emph{Journal of Educational and Behavioral Statistics.}
+  \emph{Journal of Educational and Behavioral Statistics.} 43(6):663--692.
 }
 
 \author{
