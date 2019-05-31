@@ -65,8 +65,9 @@ waic_hetop(ngk, samps)
 
 \examples{
 ## example call using data 'ngk' and output 'm' from fh_hetop:
-##
-## waic_hetop(ngk, m$BUGSoutput$sims.matrix)
+\dontrun{
+ waic_hetop(ngk, m$BUGSoutput$sims.matrix)
+}
 }
 
 \keyword{utilities}

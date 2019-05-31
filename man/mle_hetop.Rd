@@ -129,6 +129,7 @@ mle_hetop(ngk, fixedcuts, svals=NULL, iterlim = 1500, ...)
 }
 
 \examples{
+\dontrun{
 set.seed(1001)
 
 ## define true parameters
@@ -172,6 +173,7 @@ print(m$est_fc$mug[3])
 print(min(m$est_fc$mug[-3]))
 print(m$est_fc$mug[4])
 print(max(m$est_fc$mug[-4]))
+}
 }
 
 \keyword{models}

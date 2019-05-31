@@ -6,7 +6,7 @@
 
 \description{
   Fits the FH-HETOP model described by Lockwood, Castellano and Shear
-  (forthcoming) using the \code{\link{jags}} function in R2jags.
+  (2018) using the \code{\link{jags}} function in R2jags.
 }
 
 \usage{
@@ -79,7 +79,7 @@ seed=12345, modelfileonly = FALSE, ...)
   model code depending on the specification of the Efron priors and any
   covariates for the group means and group standard deviations.  Details
   on the FH-HETOP model are provided by Lockwood, Castellano and Shear
-  (forthcoming).
+  (2018).
 
   Covariates to predict the group means and group log standard
   deviations are optional.  However, \code{Xm} and \code{Xs} must both
@@ -147,6 +147,7 @@ seed=12345, modelfileonly = FALSE, ...)
 }
 
 \examples{
+\dontrun{
 set.seed(3001)
 cat("NOTE: this example uses MCMC and takes a little while to run\n")
 
@@ -184,6 +185,7 @@ print(data.frame(truth = c(beta_m, beta_s), s[grep("beta", rownames(s)),]))
 
 print(cor(mug,    s[grep("mu",    rownames(s)),"mean"]))
 print(cor(sigmag, s[grep("sigma", rownames(s)),"mean"]))
+}
 }
 
 \keyword{models}
