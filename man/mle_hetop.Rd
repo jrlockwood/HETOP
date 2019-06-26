@@ -157,7 +157,6 @@ print(sum(p * m$est_star$mug))
 print(sum(p * (m$est_star$mug^2 + m$est_star$sigmag^2)))
 
 ## dealing with sparse counts
-\dontrun{
 ngk_sparse <- matrix(rpois(G*4, lambda=5), ncol=4)
 ngk_sparse[1,] <- c(5,8,0,0)
 ngk_sparse[2,] <- c(0,10,10,0)
@@ -173,7 +172,6 @@ print(m$est_fc$mug[3])
 print(min(m$est_fc$mug[-3]))
 print(m$est_fc$mug[4])
 print(max(m$est_fc$mug[-4]))
-}
 }
 
 \keyword{models}
