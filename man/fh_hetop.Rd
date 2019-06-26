@@ -190,6 +190,10 @@ print(data.frame(truth = c(beta_m, beta_s), s[grep("beta", rownames(s)),]))
 
 print(cor(mug,    s[grep("mu",    rownames(s)),"mean"]))
 print(cor(sigmag, s[grep("sigma", rownames(s)),"mean"]))
+
+## manual calculation of WAIC (see help file for waic_hetop)
+tmp <- waic_hetop(ngk, m$BUGSoutput$sims.matrix)
+identical(tmp, m$fh_hetop_extras$waicinfo)
 }
 
 \keyword{models}
