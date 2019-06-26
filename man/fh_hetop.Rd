@@ -11,7 +11,7 @@
 
 \usage{
 fh_hetop(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL,
-seed=12345, modelfileonly = FALSE, ...)
+seed=12345, modelfileonly = FALSE, modloc=NULL, ...)
 }
 
 \arguments{
@@ -68,6 +68,13 @@ seed=12345, modelfileonly = FALSE, ...)
     running JAGS.  Default is FALSE.
   }
 
+  \item{modloc}{
+    Optional character vector of length 1 providing the
+    full path to the name of file where the JAGS model code will be written.
+    Defaults to NULL, in which case the code will be written to a
+    temporary file.
+  }
+  
   \item{ ... }{
     Additional arguments to \code{\link{jags}}.
   }
@@ -147,12 +154,10 @@ seed=12345, modelfileonly = FALSE, ...)
 }
 
 \examples{
-\dontrun{
-set.seed(3001)
-cat("NOTE: this example uses MCMC and takes a little while to run\n")
+set.seed(1001)
 
 ## define mean-centered covariates
-G  <- 100
+G  <- 12
 z1 <- sample(c(0,1), size=G, replace=TRUE)
 z2 <- 0.5*z1 + rnorm(G)
 Z  <- cbind(z1 - mean(z1), z2 = z2 - mean(z2))
@@ -170,12 +175,12 @@ ngk  <- gendata_hetop(G, K = 4, ng, mug, sigmag, cutpoints)
 print(ngk)
 
 ## fit FH-HETOP model including covariates
-## NOTE: better convergence would be achieved with larger
-##       values of n.iter and n.burnin
+## NOTE: using an extremely small number of iterations for testing,
+##       so that convergence is not expected
 m <- fh_hetop(ngk, fixedcuts = c(-1.0, 0.0), p = c(10,10),
               m = c(100, 100), gridL = c(-5.0, log(0.10)),
               gridU = c(5.0, log(5.0)), Xm = Z, Xs = Z,
-              n.iter = 1000, n.burnin = 500)
+              n.iter = 100, n.burnin = 50)
 
 print(m)
 print(names(m$fh_hetop_extras))
@@ -185,7 +190,6 @@ print(data.frame(truth = c(beta_m, beta_s), s[grep("beta", rownames(s)),]))
 
 print(cor(mug,    s[grep("mu",    rownames(s)),"mean"]))
 print(cor(sigmag, s[grep("sigma", rownames(s)),"mean"]))
-}
 }
 
 \keyword{models}

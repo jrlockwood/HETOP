@@ -82,7 +82,7 @@ sigmag    <- seq(from=  2.0, to= 0.8, length=G)
 cutpoints <- c(-1.0, 0.0, 0.8)
 
 ## generate data with large counts
-ng   <- rep(1000000,G)
+ng   <- rep(100000,G)
 ngk  <- gendata_hetop(G, K = 4, ng, mug, sigmag, cutpoints)
 print(ngk)
 

@@ -129,7 +129,6 @@ mle_hetop(ngk, fixedcuts, svals=NULL, iterlim = 1500, ...)
 }
 
 \examples{
-\dontrun{
 set.seed(1001)
 
 ## define true parameters
@@ -139,7 +138,7 @@ sigmag    <- seq(from=  2.0, to= 0.8, length=G)
 cutpoints <- c(-1.0, 0.0, 0.8)
 
 ## generate data with large counts
-ng   <- rep(1000000,G)
+ng   <- rep(100000,G)
 ngk  <- gendata_hetop(G, K = 4, ng, mug, sigmag, cutpoints)
 print(ngk)
 
@@ -158,6 +157,7 @@ print(sum(p * m$est_star$mug))
 print(sum(p * (m$est_star$mug^2 + m$est_star$sigmag^2)))
 
 ## dealing with sparse counts
+\dontrun{
 ngk_sparse <- matrix(rpois(G*4, lambda=5), ncol=4)
 ngk_sparse[1,] <- c(5,8,0,0)
 ngk_sparse[2,] <- c(0,10,10,0)

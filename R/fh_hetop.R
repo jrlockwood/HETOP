@@ -1,8 +1,15 @@
-fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=12345, modelfileonly = FALSE, ...){
+fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=12345, modelfileonly = FALSE, modloc=NULL, ...){
 
     set.seed(seed)
     tmpdir <- tempdir()
-    modloc <- paste0(tmpdir,"/model.txt")
+    
+    if(is.null(modloc)){
+        modloc <- paste0(tmpdir,"/model.txt")
+    } else {
+        if(!is.character(modloc) || (length(modloc)!=1)){
+            stop("invalid modloc")
+        }
+    }
 
     ## #############################################
     ## basic checks on arguments
@@ -463,31 +470,29 @@ fh_hetop <- function(ngk, fixedcuts, p, m, gridL, gridU, Xm=NULL, Xs=NULL, seed=
     ## if desired, stop here and just return model file
     ## ###########################################
     if(modelfileonly){
-        cat("model file location returned\n")
         return(modloc)
     }
 
     ## ###########################################
     ## otherwise run JAGS
     ## ###########################################
-    flush.console()
-    print(system.time(r <- jags(
-                          model.file         = modloc,
-                          data               = jags.data,
-                          inits              = jags.inits,
-                          parameters.to.save = jags.parameters.to.save,
-                          n.chains           = jags.n.chains,
-                          n.iter             = jags.n.iter,
-                          n.burnin           = jags.n.burnin,
-                          n.thin             = jags.n.thin,
-                          DIC                = jags.DIC,
-                          working.directory  = jags.working.directory,
-                          refresh            = jags.refresh,
-                          progress.bar       = jags.progress.bar,
-                          digits             = jags.digits,
-                          RNGname            = jags.RNGname,
-                          jags.module        = jags.jags.module)))
-    
+    r <- jags(
+        model.file         = modloc,
+        data               = jags.data,
+        inits              = jags.inits,
+        parameters.to.save = jags.parameters.to.save,
+        n.chains           = jags.n.chains,
+        n.iter             = jags.n.iter,
+        n.burnin           = jags.n.burnin,
+        n.thin             = jags.n.thin,
+        DIC                = jags.DIC,
+        working.directory  = jags.working.directory,
+        refresh            = jags.refresh,
+        progress.bar       = jags.progress.bar,
+        digits             = jags.digits,
+        RNGname            = jags.RNGname,
+        jags.module        = jags.jags.module)
+
     ## ###########################################
     ## bunch of post-processing and additional statistics
     ## ###########################################
